@@ -15,7 +15,13 @@ const createTask = async (tarefa) =>
     return criarTarefa;
 }
 
+const deleteTask = async (id) => {
+    const deleteTarefa = await conexao.execute ('DELETE FROM tarefas where id = ?', [id]);
+    return deleteTarefa;
+}
+
 module.exports = {
     getAll,
-    createTask
+    createTask,
+    deleteTask
 }

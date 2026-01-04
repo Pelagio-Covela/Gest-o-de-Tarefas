@@ -13,7 +13,15 @@ const createTask = async (request, response) =>
     return response.status(201).json({InsertId: criarTarefa.insertId});
 }
 
+const deleteTarefa = async (request, response) => {
+    const { id } = request.params;
+    await tarefasModel.deleteTask(id);
+    return response.status(204).json({ message: "Tarefa com ID: "+id+" foi removida"});
+
+}
+
 module.exports = {
     getAll,
-    createTask
+    createTask,
+    deleteTarefa
 }
