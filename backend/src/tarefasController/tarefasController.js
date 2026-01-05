@@ -20,8 +20,15 @@ const deleteTarefa = async (request, response) => {
 
 }
 
+const updatetask = async (request, response) =>
+{
+    const { id } = request.params;
+    const updatetarefa = tarefasModel.updatetask(id, request.body);
+    return response.status(204).json({ message: "Tarefa actualizada com sucesso"});
+}
 module.exports = {
     getAll,
     createTask,
-    deleteTarefa
+    deleteTarefa,
+    updatetask
 }

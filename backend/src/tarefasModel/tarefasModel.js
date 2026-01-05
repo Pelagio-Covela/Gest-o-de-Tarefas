@@ -20,8 +20,16 @@ const deleteTask = async (id) => {
     return deleteTarefa;
 }
 
+const updatetask = async (id, tarefa) =>
+{
+    const { estado } = tarefa;
+    const [updatetarefa] = await conexao.execute ('UPDATE tarefas set estado = ? where id = ?', [estado, id]);
+    return updatetarefa;
+}
+
 module.exports = {
     getAll,
     createTask,
-    deleteTask
+    deleteTask,
+    updatetask
 }
